@@ -1,0 +1,25 @@
+# Байт-компилированные файлы
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальные окружения
+.env
+.venv
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Дистрибутивы
+dist/
+build/
+*.egg-info/
+
+# Кэш
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
