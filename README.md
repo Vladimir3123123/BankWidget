@@ -55,3 +55,36 @@ print(filter_by_state(operations))
 print(filter_by_state(operations, "CANCELED"))
 print(sort_by_date(operations))
 ```
+
+## Тестирование
+
+Проект покрыт тестами с использованием `pytest`.
+
+### Установка зависимостей для тестов
+
+```bash
+pip install pytest pytest-cov
+```
+
+### Запуск тестов
+
+```bash
+pytest tests/ -v
+```
+
+### Проверка покрытия
+
+```bash
+pytest tests/ --cov=src --cov-report=html --cov-report=term
+```
+
+HTML-отчёт сохраняется в папку `htmlcov/`. Откройте `htmlcov/index.html` в браузере для просмотра детального отчёта.
+
+### Структура тестов
+
+- `tests/conftest.py` — общие фикстуры.
+- `tests/test_masks.py` — тесты для `masks.py`.
+- `tests/test_widget.py` — тесты для `widget.py`.
+- `tests/test_processing.py` — тесты для `processing.py`.
+
+Все ключевые функции покрыты тестами, включая параметризованные проверки и граничные случаи. Покрытие — более 80%.
