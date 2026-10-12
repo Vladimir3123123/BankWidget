@@ -210,6 +210,53 @@ HTML-отчёт сохраняется в папку `htmlcov/`. Откройт�
 
 В тестах декоратора используются встроенные фикстуры `capsys` (перехват вывода в консоль) и `tmp_path` (временный файл для логов).
 
+## Работа с JSON (`src/utils.py`)
+
+### `load_transactions(file_path)`
+
+Читает JSON-файл с транзакциями и возвращает список словарей.
+Если файл не найден, пуст, невалидный или содержит не список — возвращает `[]`.
+
+```python
+from src.utils import load_transactions
+
+transactions = load_transactions("data/operations.json")
+print(transactions)
+```
+
+## Конвертация валют (`src/external_api.py`)
+
+### `convert_to_rub(transaction)`
+
+Возвращает сумму транзакции в рублях (`float`).
+Если валюта операции — `USD` или `EUR`, обращается к Exchange Rates Data API за актуальным курсом.
+
+```python
+from src.external_api import convert_to_rub
+
+transaction = {
+    "operationAmount": {
+        "amount": "8221.37",
+        "currency": {"name": "USD", "code": "USD"},
+    }
+}
+
+print(convert_to_rub(transaction))  # сумма в рублях
+```
+
+## Переменные окружения
+
+Для работы конвертации валют нужен API-ключ Exchange Rates Data API.
+Скопируйте `.env.template` в `.env` и подставьте свой токен:
+
+```bash
+cp .env.template .env
+# затем откройте .env и укажите реальный EXCHANGE_RATES_API_KEY
+```
+
+Файл `.env` не попадает в репозиторий (он в `.gitignore`).
+В репозиторий идёт только `.env.template` с названиями переменных.
+
 ## Лицензия
 
 Учебный проект.
