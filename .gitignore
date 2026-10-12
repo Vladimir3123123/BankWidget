@@ -14,6 +14,10 @@ venv/
 .idea/
 .vscode/
 
+# Логи
+logs/*.log
+!logs/.gitkeep
+
 # Дистрибутивы
 dist/
 build/
