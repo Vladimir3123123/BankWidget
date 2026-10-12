@@ -5,6 +5,7 @@ __pycache__/
 
 # Виртуальные окружения
 .env
+!.env.template
 .venv
 env/
 venv/
@@ -12,6 +13,10 @@ venv/
 # IDE
 .idea/
 .vscode/
+
+# Логи
+logs/*.log
+!logs/.gitkeep
 
 # Дистрибутивы
 dist/
@@ -22,4 +27,3 @@ build/
 .pytest_cache/
 .mypy_cache/
 .coverage
-htmlcov/
