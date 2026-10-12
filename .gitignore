@@ -5,6 +5,7 @@ __pycache__/
 
 # Виртуальные окружения
 .env
+!.env.template
 .venv
 env/
 venv/
