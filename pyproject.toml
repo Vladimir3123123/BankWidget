@@ -23,6 +23,9 @@ lint = [
     "mypy (>=2.3.1,<3.0.0)"
 ]
 
+[tool.coverage.run]
+omit = ["*/__main__.py", "tests/*", "src/main.py"]
+
 [tool.black]
 # Максимальная длина строки
 line-length = 119
