@@ -14,9 +14,7 @@ class TestReadCsvFile:
                 {"id": 2, "amount": 200, "currency": "USD"},
             ]
         )
-        mocker.patch(
-            "src.csv_excel_reader.pd.read_csv", return_value=mock_df
-        )
+        mocker.patch("src.csv_excel_reader.pd.read_csv", return_value=mock_df)
 
         result = read_csv_file("fake.csv")
 
@@ -60,9 +58,7 @@ class TestReadExcelFile:
                 {"id": 2, "amount": 400, "currency": "RUB"},
             ]
         )
-        mocker.patch(
-            "src.csv_excel_reader.pd.read_excel", return_value=mock_df
-        )
+        mocker.patch("src.csv_excel_reader.pd.read_excel", return_value=mock_df)
 
         result = read_excel_file("fake.xlsx")
 

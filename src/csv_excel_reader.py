@@ -1,6 +1,6 @@
 import logging
 import os
-from typing import Any
+from typing import Any, cast
 
 import pandas as pd
 
@@ -10,12 +10,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 if not logger.handlers:
-    file_handler = logging.FileHandler(
-        "logs/csv_excel_reader.log", mode="w", encoding="utf-8"
-    )
-    file_formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
+    file_handler = logging.FileHandler("logs/csv_excel_reader.log", mode="w", encoding="utf-8")
+    file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     file_handler.setFormatter(file_formatter)
     logger.addHandler(file_handler)
 
@@ -40,7 +36,7 @@ def read_csv_file(file_path: str) -> list[dict[str, Any]]:
         logger.error("Ошибка парсинга CSV %s: %s", file_path, error)
         return []
 
-    result = data_frame.to_dict(orient="records")
+    result = cast(list[dict[str, Any]], data_frame.to_dict(orient="records"))
     logger.info("Успешно прочитано %d записей из %s", len(result), file_path)
     return result
 
@@ -62,7 +58,7 @@ def read_excel_file(file_path: str) -> list[dict[str, Any]]:
         logger.error("Ошибка чтения Excel %s: %s", file_path, error)
         return []
 
-    result = data_frame.to_dict(orient="records")
+    result = cast(list[dict[str, Any]], data_frame.to_dict(orient="records"))
     logger.info("Успешно прочитано %d записей из %s", len(result), file_path)
     return result
 
